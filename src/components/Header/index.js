@@ -11,7 +11,7 @@ const Header = ({ fixed }) => {
 	};
 
 	if (fixed) {
-		document.body.style.paddingTop = '60px';
+		document.body.style.paddingTop = '70px';
 	}
 
 	return (

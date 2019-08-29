@@ -104,14 +104,18 @@
 		margin-bottom: 20px;
 		border-collapse: collapse;
 
-		thead {
+		&:last-child {
+			margin-bottom: 0;
+		}
 
+		thead {
 			th {
 				// border-bottom: solid 1px #CBD5E0;
 				padding: 15px;
 				font-weight: 700;
 				font-size: 14px;
 				text-align: left;
+				user-select: none;
 			}
 		}
 
