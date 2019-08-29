@@ -1,0 +1,183 @@
+// extracted from tailwind.css
+
+// GRAYS
+$gray1: #F7FAFC;
+$gray2: #EDF2F7;
+$gray3: #E2E8F0;
+$gray4: #CBD5E0;
+$gray5: #A0AEC0;
+$gray6: #718096;
+$gray7: #4A5568;
+$gray8: #2D3748;
+$gray9: #1A202C;
+
+// REDS
+$red1: #FFF5F5;
+$red2: #FED7D7;
+$red3: #FEB2B2;
+$red4: #FC8181;
+$red5: #F56565;
+$red6: #E53E3E;
+$red7: #C53030;
+$red8: #9B2C2C;
+$red9: #742A2A;
+
+// ORANGES
+$orange1: #FFFAF0;
+$orange2: #FEEBC8;
+$orange3: #FBD38D;
+$orange4: #F6AD55;
+$orange5: #ED8936;
+$orange6: #DD6B20;
+$orange7: #C05621;
+$orange8: #9C4221;
+$orange9: #7B341E;
+
+// YELLOWS
+$yellow1: #FFFFF0;
+$yellow2: #FEFCBF;
+$yellow3: #FAF089;
+$yellow4: #F6E05E;
+$yellow5: #ECC94B;
+$yellow6: #D69E2E;
+$yellow7: #B7791F;
+$yellow8: #975A16;
+$yellow9: #744210;
+
+// GREENS
+$green1:#F0FFF4;
+$green2:#C6F6D5;
+$green3:#9AE6B4;
+$green4:#68D391;
+$green5:#48BB78;
+$green6:#38A169;
+$green7:#2F855A;
+$green8:#276749;
+$green9:#22543D;
+
+// TEALS
+$teal1: #E6FFFA;
+$teal2: #B2F5EA;
+$teal3: #81E6D9;
+$teal4: #4FD1C5;
+$teal5: #38B2AC;
+$teal6: #319795;
+$teal7: #2C7A7B;
+$teal8: #285E61;
+$teal9: #234E52;
+
+// BLUES
+$blue1: #EBF8FF;
+$blue2: #BEE3F8;
+$blue3: #90CDF4;
+$blue4: #63B3ED;
+$blue5: #4299E1;
+$blue6: #3182CE;
+$blue7: #2B6CB0;
+$blue8: #2C5282;
+$blue9: #2A4365;
+
+// INDIGOS
+$indigo1: #EBF4FF;
+$indigo2: #C3DAFE;
+$indigo3: #A3BFFA;
+$indigo4: #7F9CF5;
+$indigo5: #667EEA;
+$indigo6: #5A67D8;
+$indigo7: #4C51BF;
+$indigo8: #434190;
+$indigo9: #3C366B;
+
+// PURPLES
+$purple1: #FAF5FF;
+$purple2: #E9D8FD;
+$purple3: #D6BCFA;
+$purple4: #B794F4;
+$purple5: #9F7AEA;
+$purple6: #805AD5;
+$purple7: #6B46C1;
+$purple8: #553C9A;
+$purple9: #44337A;
+
+// PINKS
+$pink1: #FFF5F7;
+$pink2: #FED7E2;
+$pink3: #FBB6CE;
+$pink4: #F687B3;
+$pink5: #ED64A6;
+$pink6: #D53F8C;
+$pink7: #B83280;
+$pink8: #97266D;
+$pink9: #702459;
+
+// COLORS LIST
+$grays: $gray1, $gray2, $gray3, $gray4, $gray5, $gray6, $gray7, $gray8, $gray9;
+$reds: $red1, $red2, $red3, $red4, $red5, $red6, $red7, $red8, $red9;
+$oranges: $orange1, $orange2, $orange3, $orange4, $orange5, $orange6, $orange7, $orange8, $orange9;
+$yellows: $yellow1, $yellow2, $yellow3, $yellow4, $yellow5, $yellow6, $yellow7, $yellow8, $yellow9;
+$greens: $green1, $green2, $green3, $green4, $green5, $green6, $green7, $green8, $green9;
+$teals: $teal1, $teal2, $teal3, $teal4, $teal5, $teal6, $teal7, $teal8, $teal9;
+$blues: $blue1, $blue2, $blue3, $blue4, $blue5, $blue6, $blue7, $blue8, $blue9;
+$indigos: $indigo1, $indigo2, $indigo3, $indigo4, $indigo5, $indigo6, $indigo7, $indigo8, $indigo9;
+$purples: $purple1, $purple2, $purple3, $purple4, $purple5, $purple6, $purple7, $purple8, $purple9;
+$pinks: $pink1, $pink2, $pink3, $pink4, $pink5, $pink6, $pink7, $pink8, $pink9;
+
+@mixin genColors($attr, $colorList) {
+	@each $prefix, $colors in $colorList {
+		@if str-index($prefix, 'white') != null {
+			.#{$prefix} {
+				#{$attr}: #{$colors};
+			}
+		} @else {
+			@each $color in $colors {
+				$index: index($colors, $color);
+
+				.#{$prefix}-#{$index} {
+					#{$attr}: #{$color};
+				}
+			}
+		}
+	}
+}
+
+@include genColors('background-color', (
+	'bg-white': #ffffff,
+	'bg-gray': $grays,
+	'bg-red': $reds,
+	'bg-orange': $oranges,
+	'bg-yellow': $yellows,
+	'bg-green': $greens,
+	'bg-teal': $teals,
+	'bg-blue': $blues,
+	'bg-indigo': $indigos,
+	'bg-purple': $purples,
+	'bg-pink': $pinks
+));
+
+@include genColors('border-color', (
+	'border-white': #ffffff,
+	'border-gray': $grays,
+	'border-red': $reds,
+	'border-orange': $oranges,
+	'border-yellow': $yellows,
+	'border-green': $greens,
+	'border-teal': $teals,
+	'border-blue': $blues,
+	'border-indigo': $indigos,
+	'border-purple': $purples,
+	'border-pink': $pinks
+));
+
+@include genColors('color', (
+	'text-white': #ffffff,
+	'text-gray': $grays,
+	'text-red': $reds,
+	'text-orange': $oranges,
+	'text-yellow': $yellows,
+	'text-green': $greens,
+	'text-teal': $teals,
+	'text-blue': $blues,
+	'text-indigo': $indigos,
+	'text-purple': $purples,
+	'text-pink': $pinks
+));

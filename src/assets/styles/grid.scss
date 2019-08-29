@@ -1,0 +1,38 @@
+// container
+.container {
+	// display: flex;
+	width: 1024px;
+	margin: auto;
+
+	&.fluid {
+		width: 100%;
+		margin: 0;
+	}
+}
+
+// row
+.row {
+	display: flex;
+	width: 100%;
+
+	&.wrap {
+		flex-flow: row wrap;
+	}
+}
+
+// cols
+@for $i from 1 through 12 {
+	.col-#{$i} {
+		display: flex;
+		min-width: (100% / 12) * $i;
+		padding: 0 10px;
+
+		&:first-child {
+			padding-left: 0;
+		}
+
+		&:last-child {
+			padding-right: 0;
+		}
+	}
+}

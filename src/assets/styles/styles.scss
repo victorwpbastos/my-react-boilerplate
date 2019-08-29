@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,800&display=swap');
+
+@import './normalize.css';
+@import './colors.scss';
+@import './grid.scss';
+@import './components.scss';
+
+// GENERAL
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html, body, #root {
+	height: 100%;
+	font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	-webkit-font-smoothing: antialiased;
+}
+
+body {
+	background: $gray3;
+}
+
+#root {
+	overflow-y: scroll;
+}
+
+h1, h2, h3, h4, h5 {
+	margin-bottom: 15px;
+}
+
+p {
+	line-height: 28px;
+}
+
+// FLEX
+.flex {
+	display: flex;
+	width: 100%;
+}
+
+.flex-column {
+	flex-direction: column;
+}
+
+.justify-start {
+	justify-content: flex-start;
+}
+
+.justify-center {
+	justify-content: center;
+}
+
+.justify-end {
+	justify-content: flex-end;
+}
+
+.justify-between {
+	justify-content: space-between;
+}
+
+.justify-evenly {
+	justify-content: space-evenly;
+}
+
+.justify-around {
+	justify-content: space-around;
+}
+
+.align-start {
+	align-items: flex-start;
+}
+
+.align-center {
+	align-items: center;
+}
+
+.align-end {
+	align-items: flex-end;
+}
+
+// MARGINS & PADDINGS
+@each $typeKey, $typeValue in ('m': 'margin', 'p': 'padding') {
+	@each $directionKey, $directionValue in ('t': 'top', 'r': 'right', 'b': 'bottom', 'l': 'left', 'x': 'horizontal', 'y': 'vertical', 'a': 'all') {
+		@each $unitKey, $unitValue in ('0': 0px, '5': 5px, '10': 10px, '15': 15px, '20': 20px, 'auto': auto) {
+			.#{$typeKey}#{$directionKey}-#{$unitKey} {
+				@if $directionValue == 'all' {
+					#{$typeValue}: #{$unitValue};
+				} @else if $directionValue == 'horizontal' {
+					#{$typeValue}-right: #{$unitValue};
+					#{$typeValue}-left: #{$unitValue};
+				} @else if $directionValue == 'vertical' {
+					#{$typeValue}-top: #{$unitValue};
+					#{$typeValue}-bottom: #{$unitValue};
+				} @else {
+					#{$typeValue}-#{$directionValue}: #{$unitValue};
+				}
+			}
+		}
+	}
+}
+
+// TEXT
+.text-normal {
+	font-weight: 400;
+}
+
+.text-bolder {
+	font-weight: 600;
+}
+
+.text-bold {
+	font-weight: 800;
+}
+
+.text-uppercase, .text-upper {
+	text-transform: uppercase;
+}
+
+.text-lowercase, .text-lower {
+	text-transform: lowercase;
+}
+
+@each $align in 'center' 'right' 'left' 'start' 'end' {
+	.text-#{$align} {
+		text-align: #{$align}
+	}
+}
+
+@for $size from 8 through 72 {
+	@if $size % 2 == 0 {
+		.text-#{$size} {
+			font-size: #{$size}px;
+		}
+	}
+}
+
+// SHADOWS
+.shadow {
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+
+	&.shadow-darker {
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.35);
+	}
+}
+
+// SIZING
+@for $size from 1 through 100 {
+	.h-#{$size} {
+		min-height: #{$size}#{'%'};
+		height: #{$size}#{'%'};
+	}
+
+	.w-#{$size} {
+		min-width: #{$size}#{'%'};
+		width: #{$size}#{'%'};
+	}
+}
