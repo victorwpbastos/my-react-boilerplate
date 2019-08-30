@@ -7,5 +7,6 @@ import Select from './Form/Select';
 import Textarea from './Form/Textarea';
 import Checkbox from './Form/Checkbox';
 import Radio from './Form/Radio';
+import FormCreator from './Form/FormCreator';
 
-export { Button, Table, Form, Input, Select, Textarea, Checkbox, Radio };
+export { Button, Table, Form, Input, Select, Textarea, Checkbox, Radio, FormCreator };

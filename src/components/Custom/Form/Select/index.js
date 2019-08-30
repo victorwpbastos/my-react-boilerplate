@@ -23,17 +23,19 @@ const Select = forwardRef(({ label, id, value, compareBy, multiple = false, rule
 	if (compareBy) {
 		try {
 			if (multiple) {
-				value = value.map(v => v[compareBy]);
+				let arr = value.map(v => v[compareBy]);
 
-				if (!value.length) {
+				if (value && !arr.length) {
 					throw Error(`The compareBy prop "${compareBy}" was not found on the supplied object.`);
 				}
+
+				value = arr;
 			} else {
-				value = value[compareBy];
-
-				if (!value) {
+				if (value && (value[compareBy] === undefined)) {
 					throw Error(`The compareBy prop "${compareBy}" was not found on the supplied object.`);
 				}
+
+				value = value[compareBy];
 			}
 
 			children = children.map(child => cloneElement(child, { value: child.props.value[compareBy] }));

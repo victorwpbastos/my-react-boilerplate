@@ -186,6 +186,12 @@ $error-color: $red6;
 		border-color: $border-focus-color;
 		box-shadow: 0 0 0 0.12em rgba(50, 115, 220, .3);
 	}
+
+	&:disabled, &:read-only {
+		background: $gray3;
+		pointer-events: none;
+		touch-action: none;
+	}
 }
 
 .form-component {

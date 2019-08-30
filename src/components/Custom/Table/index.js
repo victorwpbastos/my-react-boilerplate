@@ -1,5 +1,5 @@
-import React, { forwardRef, useState, useEffect } from 'react';
-import { MdUnfoldMore, MdKeyboardArrowUp, MdKeyboardArrowDown, MdChevronLeft, MdChevronRight } from 'react-icons/md';
+import React, { forwardRef, useState } from 'react';
+import { MdUnfoldMore, MdKeyboardArrowUp, MdKeyboardArrowDown } from 'react-icons/md';
 
 const Header = ({ text, clickedHeader = {}, onClick = () => {}, ...rest }) => {
 	let direction = clickedHeader.text === text ? clickedHeader.direction : null;
