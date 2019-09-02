@@ -15,6 +15,7 @@ const HomePage = () => {
 				label: 'Nome',
 				cols: 6,
 				value: state.nome,
+				mask: 'aaaa-AAAA-####',
 				onChange: value => setState({...state, nome: value })
 			},
 			{
