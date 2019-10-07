@@ -19,7 +19,6 @@ const OptionsCounter = ({ value, maxLength }) => {
 const Select = forwardRef(({ label, id, value, compareBy, multiple = false, rules = [], onChange = () => {}, children, ...rest }, ref) => {
 	children = Array.isArray(children) ? children : [children];
 
-	const _id = id || `select_${performance.now().toString().replace('.', '')}`;
 	const values = children.map(child => child.props.value);
 
 	if (compareBy) {
@@ -80,11 +79,13 @@ const Select = forwardRef(({ label, id, value, compareBy, multiple = false, rule
 		<div className="form-component">
 			<FormError value={value} rules={rules}>
 				<div className="form-component-select">
-					<label htmlFor={_id}>{ label }</label>
-					<select ref={ref} id={_id} size={multiple ? children.length : null} value={value} multiple={multiple} {...rest} onChange={handleChange}>
-						{ children }
-					</select>
-					{ multiple && <OptionsCounter value={value} maxLength={rest.maxLength} /> }
+					<label>
+						<span>{ label }</span>
+						<select ref={ref} size={multiple ? children.length : null} value={value} multiple={multiple} {...rest} onChange={handleChange}>
+							{ children }
+						</select>
+						{ multiple && <OptionsCounter value={value} maxLength={rest.maxLength} /> }
+					</label>
 				</div>
 			</FormError>
 		</div>

@@ -240,11 +240,13 @@ $error-color: $red6;
 // input, textarea & select
 .form-component-input, .form-component-textarea, .form-component-select {
 	label {
-		@include commonLabel()
+		span:first-child {
+			@include commonLabel();
+		}
 	}
 
 	input, textarea, select {
-		@include commonComponent()
+		@include commonComponent();
 	}
 
 	textarea {

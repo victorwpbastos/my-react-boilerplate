@@ -4,7 +4,7 @@ import FormError from '../FormError';
 import Masker from '../Masker/index';
 
 const Input = forwardRef(({ label, id, value, mask = '', rules = [], onChange = () => {}, ...rest }, ref) => {
-	const _id = id || `input_${performance.now().toString().replace('.', '')}`;
+	// const _id = id || `input_${performance.now().toString().replace('.', '')}`;
 
 	function handleChange(e) {
 		if (mask) {
@@ -20,8 +20,10 @@ const Input = forwardRef(({ label, id, value, mask = '', rules = [], onChange = 
 		<div className="form-component">
 			<FormError value={value} rules={rules}>
 				<div className="form-component-input">
-					<label htmlFor={_id}>{ label }</label>
-					<input ref={ref} type="text" id={_id} value={value} {...rest} onChange={handleChange} />
+					<label>
+						<span>{ label }</span>
+						<input ref={ref} type="text" value={value} {...rest} onChange={handleChange} />
+					</label>
 				</div>
 			</FormError>
 		</div>

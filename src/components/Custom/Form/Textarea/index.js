@@ -16,8 +16,6 @@ const CharsCounter = ({ value, maxLength }) => {
 };
 
 const Textarea = forwardRef(({ label, id, value, rules = [], onChange = () => {}, ...rest }, ref) => {
-	const _id = id || `textarea_${performance.now().toString().replace('.', '')}`;
-
 	if (rest.maxLength) {
 		value = value.substring(0, rest.maxLength);
 	}
@@ -30,9 +28,11 @@ const Textarea = forwardRef(({ label, id, value, rules = [], onChange = () => {}
 		<div className="form-component">
 			<FormError value={value} rules={rules}>
 				<div className="form-component-textarea">
-					<label htmlFor={_id}>{ label }</label>
-					<textarea ref={ref} id={_id} value={value} onChange={handleChange} {...rest} />
-					<CharsCounter value={value} maxLength={rest.maxLength} />
+					<label>
+						<span>{ label }</span>
+						<textarea ref={ref} value={value} onChange={handleChange} {...rest} />
+						<CharsCounter value={value} maxLength={rest.maxLength} />
+					</label>
 				</div>
 			</FormError>
 		</div>

@@ -24,16 +24,16 @@ function mask(e, mask) {
 	let masked = e.target.value.split('');
 	const specialChars = mask.split('').map((char, index) => !MASK_MAP[char] && { char, index }).filter(v => v);
 
+	if (!allowChange(e, mask)) {
+		masked.pop();
+	}
+
 	if (e.nativeEvent.data) {
 		specialChars.forEach(({ char, index }) => {
 			if (!masked[index] && masked.length === index) {
 				masked.splice(index, 0, char);
 			}
 		});
-	}
-
-	if (!allowChange(e, mask)) {
-		masked.pop();
 	}
 
 	return masked.join('');
