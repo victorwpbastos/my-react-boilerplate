@@ -17,6 +17,8 @@ const OptionsCounter = ({ value, maxLength }) => {
 };
 
 const Select = forwardRef(({ label, id, value, compareBy, multiple = false, rules = [], onChange = () => {}, children, ...rest }, ref) => {
+	children = Array.isArray(children) ? children : [children];
+
 	const _id = id || `select_${performance.now().toString().replace('.', '')}`;
 	const values = children.map(child => child.props.value);
 
