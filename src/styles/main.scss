@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,800&display=swap');
+@import 'colors';
+@import '../../node_modules/bootstrap/scss/bootstrap';
+
+html, body, #root {
+    font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	height: 100%;
+	-webkit-font-smoothing: antialiased;
+}
+
+#root {
+    overflow-y: scroll;
+	padding: 20px;
+}
+
+* {
+    -webkit-font-smoothing: antialiased;
+}
+
+// label {
+//     margin-bottom: 0;
+// 	font-weight: bold;
+// 	font-size: 14px;
+// }
+
+// .form-control, .btn {
+//     border-radius: 2px;
+// }

@@ -1,0 +1,12 @@
+.input {
+    input[type="text"] {
+        border-radius: 2px !important;
+    }
+
+    label {
+        margin-bottom: 0 !important;
+        font-weight: bold !important;
+        font-size: 14px !important;
+        color: var(--dark);
+    }
+}

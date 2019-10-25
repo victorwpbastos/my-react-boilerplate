@@ -1,0 +1,17 @@
+.table {
+    // border: solid 1px;
+    border-color: #CBD5E0;
+
+    // thead tr th {
+    //     background: var(--primary) !important;
+    // }
+
+    thead tr th, tbody tr td {
+        border: 0;
+    }
+
+    thead th {
+        font-size: 14px;
+        font-weight: 600;
+    }
+}
